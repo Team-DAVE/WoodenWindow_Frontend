@@ -1,0 +1,41 @@
+
+<div class = "container1">
+    <div class="columns is-mobile is-centered">
+       <div class="column is-5">
+       <article class="message">
+          <div class="message-header">
+             <p class="has-text-centered">Sign Up Now!</p>
+          </div>
+       <div class="message-body">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="field">
+          <div class="control">
+            <p>Email</p>
+            <input class="input is-primary" type="email" placeholder="Enter Email" id="email" formControlName="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <p>Password</p>
+            <input class="input is-primary" type="password" placeholder="Enter Password" id="password" formControlName="password" required>
+          </div>
+        </div>
+        <div class="field">
+            <div class="control">
+              <p>First Name</p>
+              <input class="input is-primary" type="text" placeholder="Enter First Name" id="firstName" formControlName="firstName" required>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <p>Last Name</p>
+              <input class="input is-primary" type="text" placeholder="Enter Last Name" id="lastName" formControlName="lastName" required>
+            </div>
+          </div>
+        <button class="button is-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </article>
+  </div>
+ </div>
+ </div>

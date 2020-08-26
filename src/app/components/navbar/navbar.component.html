@@ -1,0 +1,47 @@
+<nav id="navbar" class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="app-component">
+      <div id="woodenWindowlogo">WoodenWindow</div>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">Employers</a>
+      <a class="navbar-item">Job Seekers</a>
+    </div>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">More</a>
+
+      <div class="navbar-dropdown is-right">
+        <a class="navbar-item">Community</a>
+        <a class="navbar-item">We Are Hiring</a>
+        <a class="navbar-item">Company</a>
+        <hr class="navbar-divider">
+        <a class="navbar-item">Report an issue</a>
+      </div>
+    </div>
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary" routerLink="/signup" *ngIf="isLoggedIn()">
+          Sign up
+        </a>
+        <a class="button is-primary" routerLink="/login" *ngIf="isLoggedIn()">
+          Log in
+        </a>
+        <a class="button is-primary" routerLink="/login" *ngIf="!isLoggedIn()" (click)= "logout()">
+          Logout
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

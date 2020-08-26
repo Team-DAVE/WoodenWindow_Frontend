@@ -1,0 +1,10 @@
+#navbar {
+    position: static;
+    width: 100%;
+}
+
+#woodenWindowlogo{
+    color: hsl(171, 100%, 41%);
+    font-family: 'Lobster', cursive;
+    font-size: x-large;
+}

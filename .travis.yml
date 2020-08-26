@@ -1,0 +1,30 @@
+language: node_js
+  node_js:
+    - "12.18.2"
+
+services:
+  - docker
+before_script:
+  -npm install
+script:
+  - npm install npm run test --watch=false --no-progress
+  - docker build -t WoodenWindowFrontEnd
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag WoodenWindowFrontEnd $DOCKER_USER/WoodenWindowFrontEnd:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USER/WoodenWindowFrontEnd:$TRAVIS_BUILD_NUMBER
+  - docker tag WoodenWindowFrontEnd $DOCKER_USER/WoodenWindowFrontEnd:latest
+  - docker push $DOCKER_USER/WoodenWindowFrontEnd:latest
+
+# deploy:
+#   provider: elasticbeanstalk
+#   access_key_id:
+#     secure: "ACCESS-KEY-ID"
+#   secret_access_key:
+#     secure: "SECRET-ACCESS-KEY"
+#   region: "us-east-1"
+#   app: "Project_2"
+#   env: "http://project2-env.eba-pmybczpa.us-east-1.elasticbeanstalk.com/"
+#   bucket_name: "elasticbeanstalk-us-east-1-883500907501"
+#   on:
+#     branch: master

@@ -1,0 +1,37 @@
+/* @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css'); */
+
+.my-form{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+ 
+.full-width {
+  width: 100%;
+}
+
+.form-group{
+  margin: auto;
+  width: 15%;
+}
+
+h1{
+  text-align: center;
+}
+
+.btn.btn-success{
+  margin: auto;
+}
+
+#center {
+  width: 100%;
+  text-align: center;
+}
+
+.btn.btn-success{
+    background-color: hsl(171, 100%, 41%);
+}
+
+.container1{
+    margin:30px;
+}

@@ -1,0 +1,88 @@
+<div class="hero-body">
+    <div class="columns" id="homepage-container">
+        <aside class="menu column is-3" id="sidebar">
+            <h1 id="side-navbar-header">Welcome {{ user.firstName + ' ' + user.lastName}} </h1>
+        <p class="menu-label">
+            User Information
+        </p>
+        <ul class="menu-list">
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='newsfeed'}" 
+                    (click)="setUserSideNavbarSelection('newsfeed')"
+                    routerLink="./">
+                        News Feed
+                </a>
+            </li>
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='updateName'}" 
+                    (click)="setUserSideNavbarSelection('updateName')"
+                    routerLink="./updatename">
+                        Update Name
+                </a>
+            </li>
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='updateAddress'}" 
+                    (click)="setUserSideNavbarSelection('updateAddress')"
+                    routerLink="./updateaddress">
+                        Update Address
+                </a>
+            </li>
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='updatePassword'}" 
+                    (click)="setUserSideNavbarSelection('updatePassword')"
+                    routerLink="./updatepassword">
+                        Update Password
+                </a>
+            </li>
+        </ul>
+        <p class="menu-label">
+            Application Profiles
+        </p>
+        <ul class="menu-list">
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='newProfile'}" 
+                    (click)="setUserSideNavbarSelection('newProfile')"
+                    routerLink="./newprofile">
+                        Create New Profile
+
+                </a>
+                <ul>
+                    <p *ngIf="userProfiles.length > 0" class="menu-label">Current Profiles</p>
+                    <li *ngFor="let profile of userProfiles">
+                        <a  [ngClass]="{ 'is-active':userSideNavabarSelection===profile.profileName}" 
+                            (click)="setUserSideNavbarSelection(profile.profileName)"
+                            [routerLink]="['./profile', profile.profileId]">
+                                {{ profile.profileName }}
+                        </a>
+                    </li>
+                </ul> 
+            </li>
+        </ul>
+        <p class="menu-label">
+            Businesses
+        </p>
+        <ul class="menu-list">
+            <li>
+                <a  [ngClass]="{ 'is-active':userSideNavabarSelection==='newBusiness'}" 
+                    (click)="setUserSideNavbarSelection('newBusiness')"
+                    routerLink="./newbusiness">
+                        Create New Business
+                </a>
+                <ul>
+                    <p *ngIf="userBusinesses.length > 0" class="menu-label">Current Businesses</p>
+                    <li *ngFor="let business of userBusinesses">
+                        <a  [ngClass]="{ 'is-active':userSideNavabarSelection===business.name}" 
+                            (click)="setUserSideNavbarSelection(business.name)"
+                            [routerLink]="['./business', business.businessId]">
+                                {{ business.name }}
+                        </a>
+                    </li>
+                </ul> 
+            </li>
+        </ul>
+        </aside>
+        <div class="column is-9">
+            <router-outlet></router-outlet> 
+        </div>
+    </div>
+</div>
