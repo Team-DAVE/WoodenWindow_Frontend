@@ -38,6 +38,9 @@
         <a class="button is-primary" routerLink="/login" *ngIf="isLoggedIn()">
           Log in
         </a>
+        <a class="button is-primary" [routerLink]="['/user', userId]" *ngIf="!isLoggedIn()">
+          My Account
+        </a>
         <a class="button is-primary" routerLink="/login" *ngIf="!isLoggedIn()" (click)= "logout()">
           Logout
         </a>

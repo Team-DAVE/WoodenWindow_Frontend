@@ -31,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './services/user.service';
 import { ProfileService } from './services/profile.service';
 import { BusinessService } from './services/business.service';
+import { UserHomepageService } from './services/user-homepage.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { BusinessService } from './services/business.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, ProfileService, BusinessService],
+  providers: [UserService, ProfileService, BusinessService, UserHomepageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

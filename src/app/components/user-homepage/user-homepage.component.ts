@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { BusinessService } from '../../services/business.service';
 import { Business } from 'src/app/models/business';
+import { UserHomepageService } from 'src/app/services/user-homepage.service';
 
 @Component({
   selector: 'app-user-homepage',
@@ -15,19 +16,29 @@ import { Business } from 'src/app/models/business';
 })
 export class UserHomepageComponent implements OnInit {
   userSideNavabarSelection = 'newsfeed';
-  user: User;
+  currentUser: User;
   currentUserId: number;
   userProfiles: Profile[];
   userBusinesses: Business[];
 
   constructor(private route: ActivatedRoute, private userService: UserService, private profileService: ProfileService,
-              private businessService: BusinessService) { }
+              private businessService: BusinessService, private userHomePageSource: UserHomepageService) {
+                this.userHomePageSource.newProfileAdded$.subscribe(
+                  profile => {
+                    this.userProfiles.push(profile);
+                  }
+                );
+               }
 
   ngOnInit(): void {
     this.currentUserId = parseInt(this.route.snapshot.paramMap.get('userId'), 10);
-    this.user = JSON.parse(localStorage.getItem('userInfo'));
-    console.log(this.user);
-    this.userProfiles = this.profileService.getUserProfiles(this.currentUserId);
+    this.currentUser = JSON.parse(localStorage.getItem('userInfo'));
+    this.profileService.getProfilesByUserId(this.currentUserId).subscribe(
+      response => {
+        console.log(response);
+        this.userProfiles = response;
+      }
+    );
     this.userBusinesses = this.businessService.getBusinessesByUserId(this.currentUserId);
   }
 

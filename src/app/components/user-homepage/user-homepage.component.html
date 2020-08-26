@@ -1,7 +1,7 @@
 <div class="hero-body">
     <div class="columns" id="homepage-container">
         <aside class="menu column is-3" id="sidebar">
-            <h1 id="side-navbar-header">Welcome {{ user.firstName + ' ' + user.lastName}} </h1>
+            <h1 id="side-navbar-header">Welcome {{ currentUser.firstName + ' ' + currentUser.lastName}} </h1>
         <p class="menu-label">
             User Information
         </p>
@@ -47,7 +47,7 @@
 
                 </a>
                 <ul>
-                    <p *ngIf="userProfiles.length > 0" class="menu-label">Current Profiles</p>
+                    <p *ngIf="userProfiles != undefined" class="menu-label">Current Profiles</p>
                     <li *ngFor="let profile of userProfiles">
                         <a  [ngClass]="{ 'is-active':userSideNavabarSelection===profile.profileName}" 
                             (click)="setUserSideNavbarSelection(profile.profileName)"
@@ -69,7 +69,7 @@
                         Create New Business
                 </a>
                 <ul>
-                    <p *ngIf="userBusinesses.length > 0" class="menu-label">Current Businesses</p>
+                    <p *ngIf="userBusinesses.length != undefined" class="menu-label">Current Businesses</p>
                     <li *ngFor="let business of userBusinesses">
                         <a  [ngClass]="{ 'is-active':userSideNavabarSelection===business.name}" 
                             (click)="setUserSideNavbarSelection(business.name)"
