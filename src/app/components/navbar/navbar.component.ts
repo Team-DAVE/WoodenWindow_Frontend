@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ɵHttpInterceptingHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
