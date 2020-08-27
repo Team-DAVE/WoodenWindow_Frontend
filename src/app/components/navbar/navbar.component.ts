@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  userId: number;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  isLoggedIn(): boolean{
-    if(JSON.parse(localStorage.getItem('userInfo')) != null){
-
+  isLoggedIn(): boolean {
+    if (JSON.parse(localStorage.getItem('userInfo')) != null) {
+      this.userId = JSON.parse(localStorage.getItem('userInfo')).userId;
       return false;
     }
     else{
@@ -21,7 +23,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  logout():void{
+  logout(): void {
 
     localStorage.setItem('userInfo', null);
 
