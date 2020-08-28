@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/users';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userUrl = 'http://localhost:8080/WoodenWindow_Backend_war_exploded/api/user';
+  userAPIUrl = `${environment.apiUrl}user`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class UserService {
         'Access-Control-Allow-Orgin': '*'
       })
     };
-    return this.httpClient.post<User>(this.userUrl + '/login', userForm, httpHead);
+    return this.httpClient.post<User>(`${this.userAPIUrl}/login`, userForm, httpHead);
   }
 
   addUser(userForm): Observable<boolean> {
@@ -31,6 +32,6 @@ export class UserService {
         'Access-Control-Allow-Orgin': '*'
       })
     };
-    return this.httpClient.post<boolean>(this.userUrl, userForm, httpHead);
+    return this.httpClient.post<boolean>(this.userAPIUrl, userForm, httpHead);
   }
 }

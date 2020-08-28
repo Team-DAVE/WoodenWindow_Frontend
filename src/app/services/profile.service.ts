@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Profile } from '../models/profile';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -10,7 +11,7 @@ import { Profile } from '../models/profile';
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl = 'http://localhost:8080/WoodenWindow_Backend_war_exploded/api/profile';
+  profileAPIUrl = `${environment.apiUrl}profile`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class ProfileService {
         'Access-Control-Allow-Orgin': '*'
       })
     };
-    return this.httpClient.get<Profile[]>(this.profileUrl + '/user/' + userId, httpHead);
+    return this.httpClient.get<Profile[]>(`${this.profileAPIUrl}/user/${userId}`, httpHead);
   }
 
   getProfileByProfileId(profileId: number): Observable<Profile> {
@@ -31,7 +32,7 @@ export class ProfileService {
         'Access-Control-Allow-Orgin': '*'
       })
     };
-    return this.httpClient.get<Profile>(this.profileUrl + '/' + profileId, httpHead);
+    return this.httpClient.get<Profile>(`${this.profileAPIUrl}/${profileId}`, httpHead);
   }
 
   addProfile(newProfileForm): Observable<Profile> {
@@ -42,6 +43,6 @@ export class ProfileService {
         'Access-Control-Allow-Orgin': '*'
       })
     };
-    return this.httpClient.post<Profile>(this.profileUrl, newProfileForm, httpHead);
+    return this.httpClient.post<Profile>(this.profileAPIUrl, newProfileForm, httpHead);
   }
 }
