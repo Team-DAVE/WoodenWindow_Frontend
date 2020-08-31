@@ -1,25 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { SignupComponent } from './signup.component';
 
-describe('SignupComponent', () => {
+describe('SignUp Component', () => {
   let component: SignupComponent;
-  let fixture: ComponentFixture<SignupComponent>;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+  const loginServiceSpy = jasmine.createSpyObj('UserService', ['addUser']);
+  const testUserData = {
+    email: 'testone@host.com',
+    firstName: 'Test',
+    lastName: 'One',
+    password: 'password'
+  };
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
-    })
-    .compileComponents();
+    component = new SignupComponent(routerSpy, loginServiceSpy);
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SignupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('component initial state', () => {
+    component.ngOnInit();
+    expect(component.userForm).toBeDefined();
+    expect(component.userForm.invalid).toBeTruthy();
+  });
 });
