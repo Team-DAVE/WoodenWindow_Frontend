@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
@@ -13,13 +13,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit{
     userForm: FormGroup;
 
-    constructor(
-        private userService: UserService,
-        private router: Router
-        ){
-
-    }
-
+    constructor(private router: Router, private userService: UserService){ }
 
     ngOnInit(): void {
         this.initForm();

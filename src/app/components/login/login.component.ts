@@ -13,11 +13,8 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit{
     loginForm: FormGroup;
-    constructor(
-        private userService: UserService,
-        private router: Router
-        ){
-    }
+
+    constructor(private router: Router, private userService: UserService) { }
 
     ngOnInit(): void {
         this.initForm();
@@ -43,7 +40,7 @@ export class LoginComponent implements OnInit{
                     console.log('After local storage');
                     this.router.navigate(['/user/' + response.userId]);
                 } else {
-                    alert('Username or password is incorrect. Please try again');
+                    alert('Username or password is incorrect. Please try again.');
                     localStorage.setItem('userInfo', null);
                     this.router.navigate(['/login']);
                 }

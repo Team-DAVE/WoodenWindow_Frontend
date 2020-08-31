@@ -48,12 +48,9 @@ describe('UserService', () => {
     req.flush(mockUser);
   }));
 
-  it('should add user', async(() => {
-    const mockSignupReturn = true;
-
+  it('should add user', () => {
     service.addUser('').subscribe(
       returnedBoolean => {
-        console.log('subscribe value is' + returnedBoolean.valueOf());
         expect(returnedBoolean).toEqual(true);
       }
     );
@@ -61,7 +58,5 @@ describe('UserService', () => {
     const req = httpMock.expectOne(`${environment.apiUrl}user`);
 
     expect(req.request.method).toEqual('POST');
-
-    req.flush(mockSignupReturn);
-  }));
+  });
 });

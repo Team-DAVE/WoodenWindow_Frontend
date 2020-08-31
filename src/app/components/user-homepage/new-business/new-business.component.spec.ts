@@ -22,4 +22,12 @@ describe('NewBusinessComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain the word stub', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain(
+      'stub'
+    );
+  });
 });
